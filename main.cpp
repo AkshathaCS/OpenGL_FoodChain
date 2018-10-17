@@ -1,0 +1,662 @@
+#include<GL/freeglut.h>
+#include<stdio.h>
+#include<stdlib.h>
+GLsizei ww=500,wh=500;
+int id=0,n=10;
+void myInit()
+{
+    glViewport(0,0,ww,wh);
+    glClearColor(1.0,1.0,1.0,1.0);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0,(GLdouble)ww,0.0,(GLdouble)wh);
+    glMatrixMode(GL_MODELVIEW);
+}
+void myReshape(GLsizei w,GLsizei h)
+{
+    ww=w;
+    wh=h;
+    glViewport(0,0,w,h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0,(GLdouble)ww,0.0,(GLdouble)wh);
+    glMatrixMode(GL_MODELVIEW);
+
+}
+void displayflower()
+{
+    glColor3f(0.94,0.5,0.5);
+    glBegin(GL_POLYGON);
+    glVertex2f(60,70);
+    glVertex2f(75,75);
+    glVertex2f(81,61);
+    glVertex2f(95,55);
+    glVertex2f(90,40);
+    glVertex2f(95,25);
+    glVertex2f(81,19);
+    glVertex2f(75,5);
+    glVertex2f(60,10);
+    glVertex2f(45,5);
+    glVertex2f(39,19);
+    glVertex2f(25,25);
+    glVertex2f(30,40);
+    glVertex2f(25,55);
+    glVertex2f(39,61);
+    glVertex2f(45,75);
+    glVertex2f(60,70);
+    glEnd();
+    glColor3f(0,0,0);
+    glLineWidth(5.0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(75,75);
+    glVertex2f(81,61);
+    glVertex2f(95,55);
+    glVertex2f(90,40);
+    glVertex2f(95,25);
+    glVertex2f(81,19);
+    glVertex2f(75,5);
+    glVertex2f(60,10);
+    glVertex2f(45,5);
+    glVertex2f(39,19);
+    glVertex2f(25,25);
+    glVertex2f(30,40);
+    glVertex2f(25,55);
+    glVertex2f(39,61);
+    glVertex2f(45,75);
+    glVertex2f(60,70);
+    glVertex2f(75,75);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(60,10);
+    glVertex2f(60,70);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(30,40);
+    glVertex2f(90,40);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(39,61);
+    glVertex2f(81,19);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(81,61);
+    glVertex2f(39,19);
+    glEnd();
+    glFlush();
+}
+void displayinsect(int x,int y)
+{
+
+    glColor3f(0.19,0.8,0.19);
+    glBegin(GL_POLYGON);
+    glVertex2i(5+x,20+y);
+    glVertex2i(55+x,50+y);
+    glVertex2i(60+x,50+y);
+    glVertex2i(60+x,45+y);
+    glVertex2i(10+x,15+y);
+    glVertex2i(5+x,15+y);
+    glEnd();
+    glColor3f(0,0,0);
+    glLineWidth(5.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(5+x,20+y);
+    glVertex2i(55+x,50+y);
+    glVertex2i(60+x,50+y);
+    glVertex2i(60+x,45+y);
+    glVertex2i(10+x,15+y);
+    glVertex2i(5+x,15+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(0+x,15+y);
+    glVertex2i(5+x,15+y);
+    glVertex2i(5+x,10+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(18+x,20+y);
+    glVertex2i(25+x,20+y);
+    glVertex2i(25+x,14+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(35+x,30+y);
+    glVertex2i(41+x,30+y);
+    glVertex2i(41+x,24+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(52+x,40+y);
+    glVertex2i(58+x,40+y);
+    glVertex2i(58+x,34+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(48+x,46+y);
+    glVertex2i(48+x,52+y);
+    glVertex2i(43+x,48+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(30+x,35+y);
+    glVertex2i(30+x,41+y);
+    glVertex2i(25+x,37+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(10+x,23+y);
+    glVertex2i(10+x,30+y);
+    glVertex2i(5+x,25+y);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glVertex2i(7+x,17+y);
+    glVertex2i(8+x,17+y);
+    glVertex2i(7+x,18+y);
+    glVertex2i(8+x,18+y);
+    glEnd();
+    glFlush();
+}
+void displayfrog(int x,int y)
+{
+    glColor3f(0.5,0.5,0.02);
+    glLineWidth(5.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(28+x,63+y);
+    glVertex2f(31+x,64+y);
+    glVertex2f(34+x,62+y);
+    glVertex2f(35+x,59+y);
+    glVertex2f(40+x,59+y);
+    glVertex2f(44+x,57+y);
+    glVertex2f(47+x,56+y);
+    glVertex2f(50+x,56+y);
+    glVertex2f(53+x,56+y);
+    glVertex2f(56+x,55+y);
+    glVertex2f(59+x,54+y);
+    glVertex2f(62+x,52+y);
+    glVertex2f(65+x,51+y);
+    glVertex2f(68+x,49+y);
+    glVertex2f(71+x,47+y);
+    glVertex2f(73+x,45+y);
+    glVertex2f(76+x,44+y);
+    glVertex2f(78+x,45+y);
+    glVertex2f(80+x,45+y);
+    glVertex2f(82+x,38+y);
+    glVertex2f(81+x,35+y);
+    glVertex2f(76+x,24+y);
+    glVertex2f(77+x,21+y);
+    glVertex2f(79+x,20+y);
+    glVertex2f(79+x,18+y);
+    glVertex2f(77+x,18+y);
+    glVertex2f(74+x,22+y);
+    glVertex2f(74+x,17+y);
+    glVertex2f(73+x,15+y);
+    glVertex2f(75+x,13+y);
+    glVertex2f(72+x,12+y);
+    glVertex2f(71+x,15+y);
+    glVertex2f(71+x,20+y);
+    glVertex2f(71+x,22+y);
+    glVertex2f(70+x,21+y);
+    glVertex2f(67+x,20+y);
+    glVertex2f(67+x,22+y);
+    glVertex2f(68+x,23+y);
+    glVertex2f(70+x,23+y);
+    glVertex2f(67+x,24+y);
+    glVertex2f(66+x,25+y);
+    glVertex2f(65+x,27+y);
+    glVertex2f(65+x,29+y);
+    glVertex2f(63+x,28+y);
+    glVertex2f(59+x,27+y);
+    glVertex2f(55+x,27+y);
+    glVertex2f(52+x,27+y);
+    glVertex2f(49+x,28+y);
+    glVertex2f(47+x,29+y);
+    glVertex2f(47+x,27+y);
+    glVertex2f(46+x,25+y);
+    glVertex2f(46+x,22+y);
+    glVertex2f(46+x,20+y);
+    glVertex2f(45+x,17+y);
+    glVertex2f(45+x,14+y);
+    glVertex2f(44+x,12+y);
+    glVertex2f(40+x,11+y);
+    glVertex2f(38+x,10+y);
+    glVertex2f(34+x,8+y);
+    glVertex2f(32+x,6+y);
+    glVertex2f(30+x,5+y);
+    glVertex2f(29+x,7+y);
+    glVertex2f(30+x,8+y);
+    glVertex2f(34+x,12+y);
+    glVertex2f(30+x,12+y);
+    glVertex2f(27+x,11+y);
+    glVertex2f(24+x,11+y);
+    glVertex2f(23+x,13+y);
+    glVertex2f(24+x,14+y);
+    glVertex2f(27+x,14+y);
+    glVertex2f(30+x,14+y);
+    glVertex2f(32+x,15+y);
+    glVertex2f(34+x,16+y);
+    glVertex2f(32+x,18+y);
+    glVertex2f(33+x,19+y);
+    glVertex2f(36+x,17+y);
+    glVertex2f(38+x,18+y);
+    glVertex2f(39+x,20+y);
+    glVertex2f(39+x,22+y);
+    glVertex2f(40+x,25+y);
+    glVertex2f(42+x,28+y);
+    glVertex2f(42+x,31+y);
+    glVertex2f(38+x,32+y);
+    glVertex2f(35+x,33+y);
+    glVertex2f(33+x,32+y);
+    glVertex2f(31+x,29+y);
+    glVertex2f(28+x,28+y);
+    glVertex2f(27+x,30+y);
+    glVertex2f(29+x,33+y);
+    glVertex2f(31+x,35+y);
+    glVertex2f(30+x,36+y);
+    glVertex2f(28+x,35+y);
+    glVertex2f(26+x,34+y);
+    glVertex2f(22+x,31+y);
+    glVertex2f(20+x,30+y);
+    glVertex2f(19+x,30+y);
+    glVertex2f(19+x,31+y);
+    glVertex2f(20+x,33+y);
+    glVertex2f(23+x,34+y);
+    glVertex2f(20+x,36+y);
+    glVertex2f(18+x,37+y);
+    glVertex2f(19+x,38+y);
+    glVertex2f(23+x,38+y);
+    glVertex2f(27+x,38+y);
+    glVertex2f(29+x,38+y);
+    glVertex2f(31+x,39+y);
+    glVertex2f(33+x,39+y);
+    glVertex2f(31+x,40+y);
+    glVertex2f(29+x,41+y);
+    glVertex2f(27+x,43+y);
+    glVertex2f(25+x,45+y);
+    glVertex2f(24+x,48+y);
+    glVertex2f(23+x,49+y);
+    glVertex2f(21+x,50+y);
+    glVertex2f(20+x,51+y);
+    glVertex2f(18+x,53+y);
+    glVertex2f(17+x,55+y);
+    glVertex2f(17+x,56+y);
+    glVertex2f(18+x,56+y);
+    glVertex2f(18+x,57+y);
+    glVertex2f(19+x,59+y);
+    glVertex2f(21+x,60+y);
+    glVertex2f(26+x,60+y);
+    glVertex2f(28+x,63+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(18+x,56+y);
+    glVertex2f(19+x,55+y);
+    glVertex2f(20+x,53+y);
+    glVertex2f(22+x,52+y);
+    glVertex2f(24+x,51+y);
+    glVertex2f(26+x,50+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(42+x,31+y);
+    glVertex2f(40+x,33+y);
+    glVertex2f(38+x,35+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(47+x,29+y);
+    glVertex2f(46+x,33+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(65+x,29+y);
+    glVertex2f(66+x,31+y);
+    glVertex2f(67+x,34+y);
+    glVertex2f(68+x,37+y);
+    glEnd();
+     glBegin(GL_LINE_STRIP);
+    glVertex2f(76+x,44+y);
+    glVertex2f(74+x,40+y);
+    glVertex2f(73+x,36+y);
+    glEnd();
+     glBegin(GL_LINE_STRIP);
+    glVertex2f(70+x,23+y);
+    glVertex2f(72+x,21+y);
+    glVertex2f(74+x,26+y);
+    glVertex2f(78+x,35+y);
+    glEnd();
+    glColor3f(0,0,0);
+    glBegin(GL_POLYGON);
+    glVertex2f(29+x,55+y);
+    glVertex2f(30+x,56+y);
+    glVertex2f(31+x,57+y);
+    glVertex2f(32+x,57+y);
+    glVertex2f(33+x,56+y);
+    glVertex2f(33+x,54+y);
+    glVertex2f(32+x,52+y);
+    glVertex2f(30+x,51+y);
+    glVertex2f(29+x,53+y);
+    glVertex2f(29+x,55+y);
+    glEnd();
+   glFlush();
+}
+void displaysnake(int x,int y)
+{
+
+    glLineWidth(5.0);
+    glBegin(GL_LINE_STRIP);
+    glColor3f(0,0,0);
+    glVertex2i(13+x,58+y);
+    glVertex2i(15+x,59+y);
+    glVertex2i(19+x,62+y);
+    glVertex2i(23+x,63+y);
+    glVertex2i(25+x,63+y);
+    glVertex2i(28+x,61+y);
+    glVertex2i(30+x,58+y);
+    glVertex2i(30+x,52+y);
+    glVertex2i(29+x,50+y);
+    glVertex2i(23+x,39+y);
+    glVertex2i(20+x,35+y);
+    glVertex2i(16+x,27+y);
+    glVertex2i(16+x,25+y);
+    glVertex2i(17+x,27+y);
+    glVertex2i(20+x,21+y);
+    glVertex2i(24+x,20+y);
+    glVertex2i(27+x,21+y);
+    glVertex2i(28+x,23+y);
+    glVertex2i(29+x,25+y);
+    glVertex2i(28+x,30+y);
+    glVertex2i(28+x,33+y);
+    glVertex2i(29+x,35+y);
+    glVertex2i(31+x,37+y);
+    glVertex2i(35+x,38+y);
+    glVertex2i(37+x,39+y);
+    glVertex2i(45+x,37+y);
+    glVertex2i(48+x,37+y);
+    glVertex2i(56+x,35+y);
+    glVertex2i(59+x,36+y);
+    glVertex2i(60+x,37+y);
+    glVertex2i(60+x,38+y);
+    glVertex2i(59+x,40+y);
+    glVertex2i(55+x,41+y);
+    glVertex2i(53+x,42+y);
+    glVertex2i(52+x,43+y);
+    glVertex2i(53+x,45+y);
+    glVertex2i(54+x,46+y);
+    glVertex2i(60+x,46+y);
+    glVertex2i(62+x,45+y);
+    glVertex2i(58+x,45+y);
+    glVertex2i(55+x,43+y);
+    glVertex2i(60+x,41+y);
+    glVertex2i(63+x,40+y);
+    glVertex2i(65+x,37+y);
+    glVertex2i(63+x,35+y);
+    glVertex2i(61+x,33+y);
+    glVertex2i(59+x,32+y);
+    glVertex2i(55+x,31+y);
+    glVertex2i(50+x,31+y);
+    glVertex2i(47+x,31+y);
+    glVertex2i(42+x,32+y);
+    glVertex2i(40+x,32+y);
+    glVertex2i(39+x,30+y);
+    glVertex2i(38+x,28+y);
+    glVertex2i(39+x,25+y);
+    glVertex2i(39+x,23+y);
+    glVertex2i(39+x,20+y);
+    glVertex2i(38+x,18+y);
+    glVertex2i(34+x,15+y);
+    glVertex2i(30+x,13+y);
+    glVertex2i(27+x,12+y);
+    glVertex2i(23+x,11+y);
+    glVertex2i(21+x,11+y);
+    glVertex2i(17+x,12+y);
+    glVertex2i(10+x,16+y);
+    glVertex2i(8+x,18+y);
+    glVertex2i(7+x,20+y);
+    glVertex2i(7+x,25+y);
+    glVertex2i(7+x,27+y);
+    glVertex2i(8+x,30+y);
+    glVertex2i(10+x,33+y);
+    glVertex2i(15+x,40+y);
+    glVertex2i(23+x,49+y);
+    glVertex2i(23+x,50+y);
+    glVertex2i(22+x,51+y);
+    glVertex2i(20+x,50+y);
+    glVertex2i(17+x,49+y);
+    glVertex2i(15+x,48+y);
+    glVertex2i(12+x,49+y);
+    glVertex2i(10+x,50+y);
+    glVertex2i(10+x,52+y);
+    glVertex2i(12+x,55+y);
+    glVertex2i(13+x,58+y);
+    glEnd();
+    glLineWidth(2.0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(12+x,49+y);
+    glVertex2i(9+x,44+y);
+    glVertex2i(9+x,42+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(9+x,44+y);
+    glVertex2i(7+x,43+y);
+    glEnd();
+    glLineWidth(1.5);
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(18+x,57+y);
+    glVertex2i(20+x,55+y);
+    glVertex2i(17+x,54+y);
+    glEnd();
+    glFlush();
+}
+void displayeagle(int x,int y)
+{
+
+    glColor3f(0,0,0);
+    glLineWidth(5.0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(27+x,68+y);
+    glVertex2f(50+x,80+y);
+    glVertex2f(55+x,82+y);
+    glVertex2f(60+x,83+y);
+    glVertex2f(65+x,83+y);
+    glColor3f(0.54,0.27,0.07);
+    glVertex2f(70+x,81+y);
+    glVertex2f(73+x,78+y);
+    glVertex2f(68+x,78+y);
+    glVertex2f(83+x,71+y);
+    glVertex2f(78+x,71+y);
+    glVertex2f(90+x,62+y);
+    glVertex2f(85+x,62+y);
+    glVertex2f(92+x,44+y);
+    glVertex2f(88+x,47+y);
+    glVertex2f(90+x,31+y);
+    glVertex2f(88+x,35+y);
+    glVertex2f(84+x,24+y);
+    glVertex2f(83+x,27+y);
+    glVertex2f(78+x,18+y);
+    glVertex2f(76+x,24+y);
+    glVertex2f(70+x,7+y);
+    glVertex2f(58+x,18+y);
+    glVertex2f(52+x,7+y);
+    glVertex2f(45+x,15+y);
+    glVertex2f(37+x,6+y);
+    glVertex2f(34+x,23+y);
+    glVertex2f(25+x,19+y);
+    glVertex2f(36+x,38+y);
+    glVertex2f(34+x,41+y);
+    glColor3f(0,0,0);
+    glVertex2f(17+x,40+y);
+    glVertex2f(16+x,33+y);
+    glVertex2f(10+x,40+y);
+    glVertex2f(10+x,52+y);
+    glVertex2f(27+x,64+y);
+    glVertex2f(27+x,68+y);
+    glEnd();
+    glColor3f(0,0,0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(17+x,40+y);
+    glVertex2f(45+x,52+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(27+x,64+y);
+    glVertex2f(28+x,59+y);
+    glVertex2f(25+x,55+y);
+    glVertex2f(30+x,53+y);
+    glVertex2f(50+x,55+y);
+    glVertex2f(34+x,41+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(19+x,58+y);
+    glVertex2f(19+x,56+y);
+    glVertex2f(21+x,54+y);
+    glVertex2f(23+x,54+y);
+    glVertex2f(24+x,55+y);
+    glVertex2f(22+x,57+y);
+    glVertex2f(19+x,58+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(29+x,64+y);
+    glVertex2f(35+x,64+y);
+    glVertex2f(45+x,70+y);
+    glVertex2f(48+x,70+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(35+x,64+y);
+    glVertex2f(37+x,60+y);
+    glVertex2f(42+x,61+y);
+    glVertex2f(45+x,65+y);
+    glVertex2f(42+x,68+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(37+x,65+y);
+    glVertex2f(38+x,63+y);
+    glVertex2f(40+x,63+y);
+    glVertex2f(42+x,65+y);
+    glVertex2f(40+x,67+y);
+    glEnd();
+    glFlush();
+}
+void drawarrow(int x,int y)
+{
+    glColor3f(0,0,0);
+    glLineWidth(3.0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(0+x,0+y);
+    glVertex2f(15+x,15+y);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(10+x,15+y);
+    glVertex2f(15+x,15+y);
+    glVertex2f(15+x,10+y);
+    glEnd();
+    glFlush();
+}
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+
+    if(id==1)
+    {
+       displayflower();
+       glFlush();
+    }
+    if(id==2)
+    {
+       displayflower();
+       drawarrow(80,90);
+       displayinsect(100,110);
+       glFlush();
+    }
+    if(id==3)
+    {
+       displayflower();
+       drawarrow(80,90);
+       displayinsect(100,110);
+       drawarrow(180,190);
+       displayfrog(200,220);
+       glFlush();
+    }
+    if(id==4)
+    {
+       displayflower();
+       drawarrow(80,90);
+       displayinsect(100,110);
+       drawarrow(180,190);
+       displayfrog(200,220);
+       drawarrow(290,310);
+       displaysnake(300,330);
+       glFlush();
+    }
+    if(id==5)
+    {
+       displayflower();
+       drawarrow(80,90);
+       displayinsect(100,110);
+       drawarrow(180,190);
+       displayfrog(200,220);
+       drawarrow(290,310);
+       displaysnake(300,330);
+       drawarrow(360,399);
+       displayeagle(370,400);
+       glFlush();
+    }
+    glFlush();
+}
+
+void myKey(unsigned char k,int x,int y)
+{
+    if(k=='q' || k=='Q')
+       exit(0);
+    if(k=='1')
+    {
+       id=1;
+    }
+    /*if(k=='2')
+    {
+       id=2;
+    }
+    if(k=='3')
+    {
+       id=3;
+    }
+    if(k=='4')
+    {
+       id=4;
+    }
+    if(k=='5')
+    {
+       id=5;
+    }*/
+    glutPostRedisplay();
+    glFlush();
+}
+void myTimer(int v)
+{
+    id++;
+    glutPostRedisplay();
+    glutTimerFunc(1500,myTimer,n);
+}
+
+int main(int argc,char** argv)
+{
+    glutInit(&argc,argv);
+    glutInitDisplayMode(GLUT_RGB|GLUT_DEPTH|GLUT_SINGLE);
+    glutInitWindowSize(ww,wh);
+    glutInitWindowPosition(10,10);
+    glutCreateWindow("Food chain");
+    myInit();
+    //glutReshapeFunc(myReshape);
+    glutTimerFunc(1500,myTimer,n);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(myKey);
+    glutMainLoop();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
