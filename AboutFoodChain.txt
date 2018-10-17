@@ -1,0 +1,4 @@
+•	A series of types of living things in which each one uses the next lower member of the series as a source of food is called food chain which is hierarchical in structure.
+•	In this project there will be a simple implementation of elements of food chain followed by their respective predators.
+•	The display of objects is automated.
+•	This project can be implemented as a study purpose application for children. 
